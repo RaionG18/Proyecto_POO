@@ -7,13 +7,34 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * @version (a version number or a date)
  */
 public class Plataform extends Actor
-{
-    /**
-     * Act - do whatever the Plataform wants to do. This method is called whenever
-     * the 'Act' or 'Run' button gets pressed in the environment.
-     */
+{   
+    // REF: https://www.cs.ubc.ca/~acton/techTrek/pengu/pengu.pdf
+    private int speed = 4;
+    private int leftTurn = 0;
+    private int rightTurn = 500;
+    
     public void act()
     {
-        // Add your action code here.
+        setLocation ( getX() + speed, getY() );
+        Actor actor = getOneIntersectingObject(null);
+
+        if(actor != null) {
+            actor.setLocation ( actor.getX() + speed, actor.getY() );
+        }
+        
+        if (atTurningPoint()) {
+            speed = -speed;
+        }
+    }
+    
+    public Plataform(){
+        GreenfootImage image = getImage();  
+        image.scale(80, 30);
+        setImage(image);
+    }
+    
+    public boolean atTurningPoint()
+    {
+        return (getX() <= leftTurn || getX() >= rightTurn);
     }
 }

@@ -2,7 +2,5 @@
 comment0.target=Personaje
 comment0.text=\r\n\ Personaje\u00B4principal\ que\ representa\ al\ jugador\r\n\ \r\n\ Emilio\ Gordillo\r\n\ Version\ 1.0\r\n
 comment1.params=
-comment1.target=Personaje()
-comment2.params=
-comment2.target=void\ act()
-numComments=3
+comment1.target=void\ act()
+numComments=2

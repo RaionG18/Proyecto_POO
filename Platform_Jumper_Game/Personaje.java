@@ -10,26 +10,24 @@ public class Personaje extends Actor
 {
     private int ySpeed;
     
-    public Personaje()
-    {
-    }
-    
     public void act()
     {   
         // REF: https://www.greenfoot.org/topics/3307#:~:text=To%20initially%20jump%2C%20you%20add,y%20direction%20each%20act%20method.
         int groundLevel = getWorld().getHeight() - getImage().getHeight()/2;
         boolean onGround = (getY() == groundLevel);
-        if (!onGround) // in middle of jump
-        {
+        Actor actor = getOneIntersectingObject(null);
+        
+        if (!onGround && actor==null) // in middle of jump
+        {   
             ySpeed++; // adds gravity effect
             setLocation(getX(), getY()+ySpeed); // fall (rising slower or falling faster)
-            if (getY()>=groundLevel) // has landed (reached ground level)
+            if(getY()>=groundLevel) // has landed (reached ground level)
             {
                 setLocation(getX(), groundLevel); // set on ground
                 Greenfoot.getKey(); // clears any key pressed during jump
-           }
+            }
         }
-        else // on ground
+        else// on ground or platform
         {
             if ("space".equals(Greenfoot.getKey()) || Greenfoot.isKeyDown("Up") || Greenfoot.isKeyDown("W")) // jump key detected
             {
