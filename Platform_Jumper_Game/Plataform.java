@@ -17,9 +17,14 @@ public class Plataform extends Actor
     {
         setLocation ( getX() + speed, getY() );
         Actor actor = getOneIntersectingObject(null);
-
+        
         if(actor != null) {
-            actor.setLocation ( actor.getX() + speed, actor.getY() );
+            if (actor.getY() <= getY()){
+                actor.setLocation ( actor.getX() + speed, actor.getY());
+            }
+            else{
+                actor.setLocation ( actor.getX(), actor.getY() + 9);
+            }
         }
         
         if (atTurningPoint()) {

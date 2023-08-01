@@ -29,11 +29,13 @@ public class Personaje extends Actor
         }
         else// on ground or platform
         {
+            Greenfoot.getKey(); // clears any key pressed during jump
             if ("space".equals(Greenfoot.getKey()) || Greenfoot.isKeyDown("Up") || Greenfoot.isKeyDown("W")) // jump key detected
             {
                 ySpeed = -15; // add jump speed
                 setLocation(getX(), getY()+ySpeed); // leave ground
             }
+            Greenfoot.getKey(); // clears any key pressed during jump
         }
         
         if (Greenfoot.isKeyDown("A") || Greenfoot.isKeyDown("Left"))
